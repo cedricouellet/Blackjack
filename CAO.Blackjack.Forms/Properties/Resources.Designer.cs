@@ -61,6 +61,15 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet amount.
+        /// </summary>
+        internal static string BetAmount {
+            get {
+                return ResourceManager.GetString("BetAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bg_animal_pig {
@@ -701,7 +710,7 @@ namespace CAO.Blackjack.Forms.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you wish to delete your save file?
-        ///All data will be lost permanently..
+        ///All data will be lost permanently, but you will gain a starting amount of money in the process..
         /// </summary>
         internal static string ConfirmDeleteSaveFileQuestion {
             get {
@@ -760,7 +769,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The &apos;{0}&apos; field is required..
+        ///   Looks up a localized string similar to {0} is required..
         /// </summary>
         internal static string ErrorValidationRequiredField {
             get {
@@ -786,12 +795,11 @@ namespace CAO.Blackjack.Forms.Properties {
         ///The dealer uses one deck containing 52 card 
         ///that are shuffled using the Fisher-Yates method.
         ///
+        ///You may also purchase additional background images from the shop, which is accessible from the main menu.
+        ///
         ///If you end up losing all your money, you can always trade your statistics and use the &apos;Reset Save&apos; button on the menu to get another chance to succeed.
         ///
-        ///----------------------------------------------------------------------
-        ///
-        ///Developer : Cédric-Antoine Ouellet (cedricao)
-        ///Fram [rest of string was truncated]&quot;;.
+        ///---------------- [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InfoAboutText {
             get {
@@ -1103,6 +1111,17 @@ namespace CAO.Blackjack.Forms.Properties {
         internal static string WarningInsufficientBank {
             get {
                 return ResourceManager.GetString("WarningInsufficientBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not have any more money. 
+        ///
+        ///In order to reset your bank to a starting amount, you need to go to the main menu and select the option to delete your game save..
+        /// </summary>
+        internal static string WarningNoMoreFunds {
+            get {
+                return ResourceManager.GetString("WarningNoMoreFunds", resourceCulture);
             }
         }
     }

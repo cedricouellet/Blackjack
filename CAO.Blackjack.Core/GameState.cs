@@ -238,6 +238,20 @@ namespace CAO.Blackjack.Core
             }
         }
 
+        [JsonIgnore]
+        public bool PlayerDoubled
+        {
+            get => _playerDoubled;
+            set
+            {
+                if (value == _playerDoubled) return;
+                
+                _playerDoubled = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PlayerDoubled)));
+            }
+        }
+
         /// <summary>
         /// Add a purchased background.
         /// </summary>
@@ -309,6 +323,11 @@ namespace CAO.Blackjack.Core
         /// Backing field for the DealerHand property
         /// </summary>
         private Hand? _dealerHand;
+
+        /// <summary>
+        /// Backing field for the PlayerDoubled property
+        /// </summary>
+        private bool _playerDoubled;
 
         /// <summary>
         /// Backing field for the PurchasedBackgroundIds property

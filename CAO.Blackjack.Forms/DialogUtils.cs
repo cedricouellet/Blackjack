@@ -10,10 +10,10 @@ namespace CAO.Blackjack.Forms
         /// <summary>
         /// Displays a validation error prompt for a field
         /// </summary>
-        /// <param name="fieldName">The name of the field that was invalidated</param>
-        public static void ShowValidationError(string fieldName)
+        /// <param name="invalidFieldName">The name of the field that was invalidated</param>
+        public static void ShowValidationError(string invalidFieldName)
         {
-            string message = string.Format(Resources.ErrorValidationRequiredField, fieldName);
+            string message = string.Format(Resources.ErrorValidationRequiredField, invalidFieldName);
             MessageBox.Show(message, Resources.ErrorValidationCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 

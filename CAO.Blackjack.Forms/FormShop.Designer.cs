@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormShop));
             listBackgrounds = new ListView();
-            label1 = new Label();
+            lblBackgroundsTitle = new Label();
             btnExit = new Button();
             lblTitle = new Label();
             btnUse = new Button();
@@ -52,24 +52,24 @@
             listBackgrounds.View = View.List;
             listBackgrounds.SelectedIndexChanged += listBackgrounds_SelectedIndexChanged;
             // 
-            // label1
+            // lblBackgroundsTitle
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Consolas", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(732, 94);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 22);
-            label1.TabIndex = 1;
-            label1.Text = "Backgrounds";
+            lblBackgroundsTitle.AutoSize = true;
+            lblBackgroundsTitle.BackColor = Color.Transparent;
+            lblBackgroundsTitle.Font = new Font("Consolas", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBackgroundsTitle.ForeColor = Color.White;
+            lblBackgroundsTitle.Location = new Point(732, 94);
+            lblBackgroundsTitle.Name = "lblBackgroundsTitle";
+            lblBackgroundsTitle.Size = new Size(120, 22);
+            lblBackgroundsTitle.TabIndex = 1;
+            lblBackgroundsTitle.Text = "Backgrounds";
             // 
             // btnExit
             // 
             btnExit.BackColor = Color.Crimson;
             btnExit.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(12, 12);
+            btnExit.Location = new Point(12, 441);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(113, 48);
             btnExit.TabIndex = 18;
@@ -122,7 +122,7 @@
             lblBankTitle.BackColor = Color.Transparent;
             lblBankTitle.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblBankTitle.ForeColor = Color.White;
-            lblBankTitle.Location = new Point(408, 77);
+            lblBankTitle.Location = new Point(12, 9);
             lblBankTitle.Name = "lblBankTitle";
             lblBankTitle.Size = new Size(63, 19);
             lblBankTitle.TabIndex = 22;
@@ -134,7 +134,7 @@
             lblBankValue.BackColor = Color.Transparent;
             lblBankValue.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblBankValue.ForeColor = Color.White;
-            lblBankValue.Location = new Point(477, 77);
+            lblBankValue.Location = new Point(75, 9);
             lblBankValue.Name = "lblBankValue";
             lblBankValue.Size = new Size(0, 19);
             lblBankValue.TabIndex = 24;
@@ -151,7 +151,7 @@
             Controls.Add(btnUse);
             Controls.Add(lblTitle);
             Controls.Add(btnExit);
-            Controls.Add(label1);
+            Controls.Add(lblBackgroundsTitle);
             Controls.Add(listBackgrounds);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -166,7 +166,7 @@
         #endregion
 
         private ListView listBackgrounds;
-        private Label label1;
+        private Label lblBackgroundsTitle;
         private Button btnExit;
         private Label lblTitle;
         private Button btnUse;

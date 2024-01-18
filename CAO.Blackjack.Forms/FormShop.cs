@@ -70,6 +70,11 @@ namespace CAO.Blackjack.Forms
         private void UpdateBankUI()
         {
             lblBankValue.Text = $"{state.BankAmount}$";
+
+            if (state.BankAmount == 0)
+            {
+                DialogUtils.ShowWarning(Resources.WarningNoMoreFunds);
+            }
         }
 
         /// <summary>
@@ -104,7 +109,7 @@ namespace CAO.Blackjack.Forms
             listBackgrounds.Items.Clear();
             foreach (var img in backgroundImages)
             {
-                listBackgrounds.Items.Add(new ListViewItem(img.IsLocked ? $"{img.Name} ({img.Price}$)" : img.Name)
+                listBackgrounds.Items.Add(new ListViewItem(img.ToString())
                 {
                     ForeColor = Color.White,
                     Tag = img.Id,

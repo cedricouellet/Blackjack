@@ -164,6 +164,7 @@ namespace CAO.Blackjack.Forms
             state.InProgress = false;
             state.CurrentTurn = null;
             state.BetAmount = 0;
+            state.PlayerDoubled = false;
         }
 
         /// <summary>
@@ -317,7 +318,7 @@ namespace CAO.Blackjack.Forms
                     return;
                 }
 
-                if (canKeepHitting)
+                if (canKeepHitting && state.DealerHand?.Cards.Count() > 1)
                 {
                     // Stand if soft 17 or less
                     while (state.DealerHand?.IsSoftHandOrLess == true)
@@ -326,7 +327,7 @@ namespace CAO.Blackjack.Forms
                     }
                 }
 
-                if (!HandleEndOfTurn(false))
+                if (!HandleEndOfTurn(state.PlayerDoubled))
                 {
                     state.CurrentTurn = PlayerType.Player;
                 }
@@ -337,14 +338,14 @@ namespace CAO.Blackjack.Forms
         /// <summary>
         /// Deal to the player then handle the turn.
         /// </summary>
-        private void DealToPlayer()
+        private void DealToPlayer() 
         {
             DealCard(state.PlayerHand);
 
             if (!HandleEndOfTurn(false))
             {
                 state.CurrentTurn = PlayerType.Dealer;
-                StartDealerTurn(state?.DealerHand?.Cards.Count() >= 2, state?.PlayerHand?.Sum == 21);
+                StartDealerTurn(true, state?.PlayerHand?.Sum == 21);
             }
         }
 
@@ -462,6 +463,16 @@ namespace CAO.Blackjack.Forms
         }
 
         /// <summary>
+        /// Updates the actions UI.
+        /// </summary>
+        private void UpdateActionsUI()
+        {
+            btnDouble.Enabled = !state.PlayerDoubled && state.BankAmount - state.BetAmount >= 0 && (state.BetAmount * 2) <= MaximumBetAmount;
+            btnHit.Enabled = !state.PlayerDoubled;
+            btnStand.Enabled = !state.PlayerDoubled;
+        }
+
+        /// <summary>
         /// Updates the tooltip UI.
         /// </summary>
         private void UpdateTooltipUI()
@@ -562,7 +573,6 @@ namespace CAO.Blackjack.Forms
             btnBet50.Enabled = state.BankAmount >= 50 && (state.BetAmount + 50) <= MaximumBetAmount;
             btnBet100.Enabled = state.BankAmount >= 100 && (state.BetAmount + 100) <= MaximumBetAmount;
             btnBet500.Enabled = state.BankAmount >= 500 && (state.BetAmount + 500) <= MaximumBetAmount;
-            btnDouble.Enabled = state.BankAmount - state.BetAmount >= 0 && (state.BetAmount * 2) <= MaximumBetAmount;
         }
 
         /// <summary>
@@ -627,6 +637,11 @@ namespace CAO.Blackjack.Forms
         private void UpdateBankUI()
         {
             lblBankValue.Text = $"{state.BankAmount}$";
+
+            if (state.BankAmount == 0 && state.BetAmount == 0)
+            {
+                DialogUtils.ShowWarning(Resources.WarningNoMoreFunds);
+            }
         }
         #endregion
 
@@ -658,6 +673,7 @@ namespace CAO.Blackjack.Forms
             else if (propName == nameof(state.BetAmount))
             {
                 UpdateBetUI();
+                UpdateActionsUI();
             }
             // Wins
             else if (propName == nameof(state.WinCount))
@@ -688,6 +704,10 @@ namespace CAO.Blackjack.Forms
             else if (propName == nameof(state.DealerHand))
             {
                 UpdateDealerHandUI();
+            }
+            else if (propName == nameof(state.PlayerDoubled))
+            {
+                UpdateActionsUI();
             }
         }
 
@@ -739,7 +759,7 @@ namespace CAO.Blackjack.Forms
 
             if (state.BetAmount == 0)
             {
-                DialogUtils.ShowValidationError(nameof(state.BetAmount));
+                DialogUtils.ShowValidationError(Resources.BetAmount);
                 return;
             }
 
@@ -787,7 +807,8 @@ namespace CAO.Blackjack.Forms
         {
             AudioUtils.Play(Resources.sfx_button_click);
             state.CurrentTurn = PlayerType.Dealer;
-            StartDealerTurn(state?.DealerHand?.Cards.Count() >= 2, nextCardEndsGame: true);
+            state.PlayerDoubled = true;
+            StartDealerTurn(true);
         }
 
         /// <summary>
@@ -799,6 +820,9 @@ namespace CAO.Blackjack.Forms
         {
             AudioUtils.Play(Resources.sfx_button_click);
             AddBet(state.BetAmount * 2);
+
+            state.PlayerDoubled = true;
+            
             DealToPlayer();
         }
 
