@@ -174,6 +174,8 @@ namespace CAO.Blackjack.Forms
                 return;
             }
 
+            AudioUtils.Play(Resources.sfx_card);
+
             BackgroundImage? image = ImageUtils.Backgrounds.SingleOrDefault(x => x.Id == (string)selectedItem.Tag);
             if (image == null)
             {
@@ -199,6 +201,7 @@ namespace CAO.Blackjack.Forms
         /// <param name="e">The arguments of the event.</param>
         private void btnPurchase_Click(object sender, EventArgs e)
         {
+            AudioUtils.Play(Resources.sfx_button_click);
             ListViewItem? selectedItem = listBackgrounds.SelectedItems[0];
             BackgroundImage? image = ImageUtils.Backgrounds.SingleOrDefault(x => x.Id == (string)selectedItem.Tag);
 
@@ -213,6 +216,7 @@ namespace CAO.Blackjack.Forms
             }
             else
             {
+                AudioUtils.Play(Resources.sfx_bet);
                 state.BankAmount -= image.Price;
                 state.AddPurchasedBackground(image.Id);
             }
@@ -225,6 +229,7 @@ namespace CAO.Blackjack.Forms
         /// <param name="e">The arguments of the event.</param>
         private void btnUse_Click(object sender, EventArgs e)
         {
+            AudioUtils.Play(Resources.sfx_button_click);
             ListViewItem? selectedItem = listBackgrounds.SelectedItems[0];
             BackgroundImage? image = ImageUtils.Backgrounds.SingleOrDefault(x => x.Id == (string)selectedItem.Tag);
             if (image == null)
