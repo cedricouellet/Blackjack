@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAO.Blackjack.Core", "CAO.Blackjack.Core\CAO.Blackjack.Core.csproj", "{E83E7B1C-C292-4BCE-80AB-F40A115C3058}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAO.Blackjack.Forms", "CAO.Blackjack.Forms\CAO.Blackjack.Forms.csproj", "{BEEAA05E-DDF0-4991-8542-82469E809A65}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CAO.Blackjack.Setup", "CAO.Blackjack.Setup\CAO.Blackjack.Setup.vdproj", "{D37CE722-E32F-4A5E-A978-433A7BF50047}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E83E7B1C-C292-4BCE-80AB-F40A115C3058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E83E7B1C-C292-4BCE-80AB-F40A115C3058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E83E7B1C-C292-4BCE-80AB-F40A115C3058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E83E7B1C-C292-4BCE-80AB-F40A115C3058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEEAA05E-DDF0-4991-8542-82469E809A65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEEAA05E-DDF0-4991-8542-82469E809A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEEAA05E-DDF0-4991-8542-82469E809A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEEAA05E-DDF0-4991-8542-82469E809A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D37CE722-E32F-4A5E-A978-433A7BF50047}.Debug|Any CPU.ActiveCfg = Debug
+		{D37CE722-E32F-4A5E-A978-433A7BF50047}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E530768C-9F95-493F-9F56-5063D394317B}
+	EndGlobalSection
+EndGlobal
