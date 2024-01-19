@@ -515,12 +515,12 @@ namespace CAO.Blackjack.Forms
         private void UpdateHandUI(PlayerType playerType)
         {
             Hand? hand = playerType == PlayerType.Player ? state.PlayerHand : state.DealerHand;
-            GroupBox groupCards = playerType == PlayerType.Player ? groupPlayerCards : groupDealerCards;
+            Label label = playerType == PlayerType.Player ? lblPlayerHand : lblDealerHand;
             Panel[] panels = playerType == PlayerType.Player ? PlayerCardPanels : DealerCardPanels;
 
             if (hand == null)
             {
-                groupCards.Text = string.Empty;
+                label.Text = string.Empty;
             }
             else
             {
@@ -537,8 +537,9 @@ namespace CAO.Blackjack.Forms
                     sumDisplay = $"{hand.Sum}";
                 }
 
-                groupCards.Text = $"{handName}: {sumDisplay}";
+                label.Text = $"{handName}: {sumDisplay}";
             }
+            label.Refresh();
 
             for (int i = 0; i < panels.Length; i++)
             {
@@ -611,16 +612,10 @@ namespace CAO.Blackjack.Forms
             groupBet.Visible = !state.InProgress;
 
             groupDealerCards.Visible = state.InProgress;
-            if (groupDealerCards.Visible)
-            {
-                groupDealerCards.Refresh();
-            }
-            
             groupPlayerCards.Visible = state.InProgress;
-            if (groupPlayerCards.Visible)
-            {
-                groupPlayerCards.Refresh();
-            }
+
+            lblDealerHand.Visible = state.InProgress;
+            lblPlayerHand.Visible = state.InProgress;
         }
 
         /// <summary>

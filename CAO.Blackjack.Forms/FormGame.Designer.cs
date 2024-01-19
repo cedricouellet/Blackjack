@@ -93,6 +93,8 @@
             tipExit = new ToolTip(components);
             btnResetBet = new Button();
             tipResetBet = new ToolTip(components);
+            lblDealerHand = new Label();
+            lblPlayerHand = new Label();
             groupInfo.SuspendLayout();
             groupBet.SuspendLayout();
             groupActions.SuspendLayout();
@@ -535,12 +537,11 @@
             groupPlayerCards.Controls.Add(pnlPlayerCard6);
             groupPlayerCards.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
             groupPlayerCards.ForeColor = Color.White;
-            groupPlayerCards.Location = new Point(283, 259);
+            groupPlayerCards.Location = new Point(283, 287);
             groupPlayerCards.Name = "groupPlayerCards";
-            groupPlayerCards.Size = new Size(418, 217);
+            groupPlayerCards.Size = new Size(418, 202);
             groupPlayerCards.TabIndex = 31;
             groupPlayerCards.TabStop = false;
-            groupPlayerCards.Text = "Player: 13";
             // 
             // groupDealerCards
             // 
@@ -558,12 +559,11 @@
             groupDealerCards.Controls.Add(pnlDealerCard6);
             groupDealerCards.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
             groupDealerCards.ForeColor = Color.White;
-            groupDealerCards.Location = new Point(283, 12);
+            groupDealerCards.Location = new Point(283, 37);
             groupDealerCards.Name = "groupDealerCards";
-            groupDealerCards.Size = new Size(418, 220);
+            groupDealerCards.Size = new Size(418, 212);
             groupDealerCards.TabIndex = 32;
             groupDealerCards.TabStop = false;
-            groupDealerCards.Text = "Dealer: 13";
             // 
             // pnlDealerCard1
             // 
@@ -677,6 +677,30 @@
             btnResetBet.UseVisualStyleBackColor = false;
             btnResetBet.Click += BtnResetBet_Click;
             // 
+            // lblDealerHand
+            // 
+            lblDealerHand.AutoSize = true;
+            lblDealerHand.BackColor = Color.Transparent;
+            lblDealerHand.Font = new Font("Consolas", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDealerHand.ForeColor = Color.White;
+            lblDealerHand.Location = new Point(283, 21);
+            lblDealerHand.Name = "lblDealerHand";
+            lblDealerHand.Size = new Size(110, 22);
+            lblDealerHand.TabIndex = 34;
+            lblDealerHand.Text = "Dealer : 0";
+            // 
+            // lblPlayerHand
+            // 
+            lblPlayerHand.AutoSize = true;
+            lblPlayerHand.BackColor = Color.Transparent;
+            lblPlayerHand.Font = new Font("Consolas", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPlayerHand.ForeColor = Color.White;
+            lblPlayerHand.Location = new Point(283, 272);
+            lblPlayerHand.Name = "lblPlayerHand";
+            lblPlayerHand.Size = new Size(110, 22);
+            lblPlayerHand.TabIndex = 35;
+            lblPlayerHand.Text = "Player : 0";
+            // 
             // FormGame
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -685,6 +709,8 @@
             BackgroundImage = Properties.Resources.bg_default;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(944, 501);
+            Controls.Add(lblPlayerHand);
+            Controls.Add(lblDealerHand);
             Controls.Add(btnResetBet);
             Controls.Add(groupDealerCards);
             Controls.Add(groupPlayerCards);
@@ -707,6 +733,7 @@
             groupPlayerCards.ResumeLayout(false);
             groupDealerCards.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -774,5 +801,7 @@
         private ToolTip tipExit;
         private Button btnResetBet;
         private ToolTip tipResetBet;
+        private Label lblDealerHand;
+        private Label lblPlayerHand;
     }
 }
