@@ -440,11 +440,20 @@ You get {0}$ back</value>
   <data name="TooltipDouble" xml:space="preserve">
     <value>Double your bet to test your luck</value>
   </data>
-  <data name="TooltipExit" xml:space="preserve">
-    <value>End the match and exit the game screen</value>
+  <data name="TooltipExitGame" xml:space="preserve">
+    <value>End the match and go to the main menu screen</value>
+  </data>
+  <data name="TooltipExitMenu" xml:space="preserve">
+    <value>Exit the application</value>
+  </data>
+  <data name="TooltipExitShop" xml:space="preserve">
+    <value>Exit the shop and go to the main menu screen</value>
   </data>
   <data name="TooltipHit" xml:space="preserve">
     <value>Get another card dealt to you</value>
+  </data>
+  <data name="TooltipPurchaseBackground" xml:space="preserve">
+    <value>Purchase the currently selected background</value>
   </data>
   <data name="TooltipResetBet" xml:space="preserve">
     <value>Reset your bet to zero</value>
@@ -453,11 +462,17 @@ You get {0}$ back</value>
     <value>Resets your entire game save.
 You will need to perform this action if your bank is empty.</value>
   </data>
+  <data name="TooltipShop" xml:space="preserve">
+    <value>Enter the shop to purchase unlockables with your hard-earned money</value>
+  </data>
   <data name="TooltipStand" xml:space="preserve">
     <value>Try your luck with the cards you were dealt</value>
   </data>
   <data name="TooltipStart" xml:space="preserve">
     <value>Enter the game screen</value>
+  </data>
+  <data name="TooltipUseBackground" xml:space="preserve">
+    <value>Set the currently selected background as your active game background</value>
   </data>
   <data name="WarningCaption" xml:space="preserve">
     <value>Warning</value>

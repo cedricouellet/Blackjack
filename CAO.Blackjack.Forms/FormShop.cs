@@ -1,5 +1,6 @@
 ﻿using CAO.Blackjack.Core;
 using CAO.Blackjack.Forms.Properties;
+using System.Runtime.CompilerServices;
 
 namespace CAO.Blackjack.Forms
 {
@@ -65,6 +66,16 @@ namespace CAO.Blackjack.Forms
         }
 
         /// <summary>
+        /// Update the tooltip UI.
+        /// </summary>
+        private void UpdateTooltipUI()
+        {
+            tipExit.SetToolTip(btnExit, Resources.TooltipExitShop);
+            tipPurchase.SetToolTip(btnPurchase, Resources.TooltipPurchaseBackground);
+            tipUse.SetToolTip(btnUse, Resources.TooltipUseBackground);
+        }
+
+        /// <summary>
         /// Update the UI for the bank amount.
         /// </summary>
         private void UpdateBankUI()
@@ -86,6 +97,7 @@ namespace CAO.Blackjack.Forms
          
             UpdateBackgroundUI();
             UpdateBankUI();
+            UpdateTooltipUI();
         }
 
         /// <summary>

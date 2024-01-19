@@ -28,6 +28,8 @@ namespace CAO.Blackjack.Forms
             tipStart.SetToolTip(btnStart, Resources.TooltipStart);
             tipReset.SetToolTip(btnResetSave, Resources.TooltipResetSave);
             tipAbout.SetToolTip(btnAbout, Resources.TooltipAbout);
+            tipShop.SetToolTip(btnShop, Resources.TooltipShop);
+            tipExit.SetToolTip(btnExit, Resources.TooltipExitMenu);
             btnResetSave.Visible = AppSaveFileUtils.SaveFileExists;
         }
 
@@ -122,7 +124,16 @@ namespace CAO.Blackjack.Forms
             formShop.FormClosed += ChildForm_Closed;
             formShop.Show(this);
         }
+
+        /// <summary>
+        /// Handles the click of the exit button.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The arguments of the event.</param>
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            AudioUtils.Play(Resources.sfx_button_click);
+            Close();
+        }
     }
-
-
 }

@@ -38,6 +38,9 @@
             btnAbout = new Button();
             tipAbout = new ToolTip(components);
             btnShop = new Button();
+            btnExit = new Button();
+            tipShop = new ToolTip(components);
+            tipExit = new ToolTip(components);
             SuspendLayout();
             // 
             // lblTitle
@@ -68,7 +71,7 @@
             // 
             // btnResetSave
             // 
-            btnResetSave.BackColor = Color.DarkRed;
+            btnResetSave.BackColor = Color.Black;
             btnResetSave.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnResetSave.ForeColor = Color.White;
             btnResetSave.Location = new Point(407, 433);
@@ -84,7 +87,7 @@
             btnAbout.BackColor = Color.DimGray;
             btnAbout.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnAbout.ForeColor = Color.White;
-            btnAbout.Location = new Point(407, 353);
+            btnAbout.Location = new Point(407, 312);
             btnAbout.Name = "btnAbout";
             btnAbout.Size = new Size(131, 34);
             btnAbout.TabIndex = 6;
@@ -97,13 +100,26 @@
             btnShop.BackColor = Color.SteelBlue;
             btnShop.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShop.ForeColor = Color.White;
-            btnShop.Location = new Point(407, 393);
+            btnShop.Location = new Point(407, 352);
             btnShop.Name = "btnShop";
             btnShop.Size = new Size(131, 34);
             btnShop.TabIndex = 7;
             btnShop.Text = "Shop";
             btnShop.UseVisualStyleBackColor = false;
             btnShop.Click += BtnShop_Click;
+            // 
+            // btnExit
+            // 
+            btnExit.BackColor = Color.Crimson;
+            btnExit.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExit.ForeColor = Color.White;
+            btnExit.Location = new Point(407, 392);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(131, 34);
+            btnExit.TabIndex = 8;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
             // 
             // FormMain
             // 
@@ -114,6 +130,7 @@
             BackgroundImage = Properties.Resources.bg_casino;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(944, 501);
+            Controls.Add(btnExit);
             Controls.Add(btnShop);
             Controls.Add(btnAbout);
             Controls.Add(btnResetSave);
@@ -139,5 +156,8 @@
         private Button btnAbout;
         private ToolTip tipAbout;
         private Button btnShop;
+        private Button btnExit;
+        private ToolTip tipShop;
+        private ToolTip tipExit;
     }
 }

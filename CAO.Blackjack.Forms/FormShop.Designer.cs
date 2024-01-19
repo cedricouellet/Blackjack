@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormShop));
             listBackgrounds = new ListView();
             lblBackgroundsTitle = new Label();
@@ -37,6 +38,9 @@
             btnPurchase = new Button();
             lblBankTitle = new Label();
             lblBankValue = new Label();
+            tipExit = new ToolTip(components);
+            tipPurchase = new ToolTip(components);
+            tipUse = new ToolTip(components);
             SuspendLayout();
             // 
             // listBackgrounds
@@ -173,5 +177,8 @@
         private Button btnPurchase;
         private Label lblBankTitle;
         private Label lblBankValue;
+        private ToolTip tipExit;
+        private ToolTip tipPurchase;
+        private ToolTip tipUse;
     }
 }

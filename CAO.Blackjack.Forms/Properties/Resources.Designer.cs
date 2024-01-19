@@ -1030,11 +1030,29 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to End the match and exit the game screen.
+        ///   Looks up a localized string similar to End the match and go to the main menu screen.
         /// </summary>
-        internal static string TooltipExit {
+        internal static string TooltipExitGame {
             get {
-                return ResourceManager.GetString("TooltipExit", resourceCulture);
+                return ResourceManager.GetString("TooltipExitGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit the application.
+        /// </summary>
+        internal static string TooltipExitMenu {
+            get {
+                return ResourceManager.GetString("TooltipExitMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit the shop and go to the main menu screen.
+        /// </summary>
+        internal static string TooltipExitShop {
+            get {
+                return ResourceManager.GetString("TooltipExitShop", resourceCulture);
             }
         }
         
@@ -1044,6 +1062,15 @@ namespace CAO.Blackjack.Forms.Properties {
         internal static string TooltipHit {
             get {
                 return ResourceManager.GetString("TooltipHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase the currently selected background.
+        /// </summary>
+        internal static string TooltipPurchaseBackground {
+            get {
+                return ResourceManager.GetString("TooltipPurchaseBackground", resourceCulture);
             }
         }
         
@@ -1067,6 +1094,15 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the shop to purchase unlockables with your hard-earned money.
+        /// </summary>
+        internal static string TooltipShop {
+            get {
+                return ResourceManager.GetString("TooltipShop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Try your luck with the cards you were dealt.
         /// </summary>
         internal static string TooltipStand {
@@ -1081,6 +1117,15 @@ namespace CAO.Blackjack.Forms.Properties {
         internal static string TooltipStart {
             get {
                 return ResourceManager.GetString("TooltipStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the currently selected background as your active game background.
+        /// </summary>
+        internal static string TooltipUseBackground {
+            get {
+                return ResourceManager.GetString("TooltipUseBackground", resourceCulture);
             }
         }
         

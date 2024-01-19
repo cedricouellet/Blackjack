@@ -487,7 +487,7 @@ namespace CAO.Blackjack.Forms
             tipHit.SetToolTip(btnHit, Resources.TooltipHit);
             tipStand.SetToolTip(btnStand, Resources.TooltipStand);
             tipDouble.SetToolTip(btnDouble, Resources.TooltipDouble);
-            tipExit.SetToolTip(btnExit, Resources.TooltipExit);
+            tipExit.SetToolTip(btnExit, Resources.TooltipExitGame);
             tipResetBet.SetToolTip(btnResetBet, Resources.TooltipResetBet);
         }
 
