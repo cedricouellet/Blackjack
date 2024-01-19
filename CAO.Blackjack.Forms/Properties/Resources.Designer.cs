@@ -61,6 +61,24 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Locked).
+        /// </summary>
+        internal static string AchievementLocked {
+            get {
+                return ResourceManager.GetString("AchievementLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Unlocked).
+        /// </summary>
+        internal static string AchievementUnlocked {
+            get {
+                return ResourceManager.GetString("AchievementUnlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet amount.
         /// </summary>
         internal static string BetAmount {
@@ -82,6 +100,16 @@ namespace CAO.Blackjack.Forms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_black_hole {
+            get {
+                object obj = ResourceManager.GetObject("bg_black_hole", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_casino {
             get {
                 object obj = ResourceManager.GetObject("bg_casino", resourceCulture);
@@ -92,9 +120,39 @@ namespace CAO.Blackjack.Forms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_classic {
+            get {
+                object obj = ResourceManager.GetObject("bg_classic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_cyber_car {
+            get {
+                object obj = ResourceManager.GetObject("bg_cyber_car", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_default {
             get {
                 object obj = ResourceManager.GetObject("bg_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_doomer {
+            get {
+                object obj = ResourceManager.GetObject("bg_doomer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -152,9 +210,39 @@ namespace CAO.Blackjack.Forms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bg_shop {
+        internal static System.Drawing.Bitmap bg_secondary {
             get {
-                object obj = ResourceManager.GetObject("bg_shop", resourceCulture);
+                object obj = ResourceManager.GetObject("bg_secondary", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_space {
+            get {
+                object obj = ResourceManager.GetObject("bg_space", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_trudeau {
+            get {
+                object obj = ResourceManager.GetObject("bg_trudeau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_wakanda {
+            get {
+                object obj = ResourceManager.GetObject("bg_wakanda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -710,7 +798,9 @@ namespace CAO.Blackjack.Forms.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you wish to delete your save file?
-        ///All data will be lost permanently, but you will gain a starting amount of money in the process..
+        ///All data will be lost permanently, but you will gain a starting amount of money in the process.
+        ///
+        ///Deleted data includes statistics, money, purchased backgrounds and unlocked achievements..
         /// </summary>
         internal static string ConfirmDeleteSaveFileQuestion {
             get {
@@ -789,17 +879,16 @@ namespace CAO.Blackjack.Forms.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Welcome to Blackjack!
         ///
-        ///In this desktop game, you can play Blackjack against the dealer 
-        ///and test your luck by beating the odds.
+        ///In this desktop game, you can play Blackjack against the dealer and test your luck by beating the odds.
         ///
         ///The dealer uses one deck containing 52 card 
         ///that are shuffled using the Fisher-Yates method.
         ///
+        ///You can unlock achievements as you play, which can be seen in the achievements screen, available from the main menu.
+        ///
         ///You may also purchase additional background images from the shop, which is accessible from the main menu.
         ///
-        ///If you end up losing all your money, you can always trade your statistics and use the &apos;Reset Save&apos; button on the menu to get another chance to succeed.
-        ///
-        ///---------------- [rest of string was truncated]&quot;;.
+        ///If you end up losing all your money, you can always t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InfoAboutText {
             get {
@@ -818,7 +907,7 @@ namespace CAO.Blackjack.Forms.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to The dealer bust!
-        /// You win {0}$ .
+        /// You win {0}.
         /// </summary>
         internal static string InfoDealerBust {
             get {
@@ -849,7 +938,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You win {0}$.
+        ///   Looks up a localized string similar to You win {0}.
         /// </summary>
         internal static string InfoPlayerWin {
             get {
@@ -859,7 +948,7 @@ namespace CAO.Blackjack.Forms.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Tie!
-        ///You get {0}$ back.
+        ///You get {0} back.
         /// </summary>
         internal static string InfoTie {
             get {
@@ -958,7 +1047,16 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add 1$ to your bet.
+        ///   Looks up a localized string similar to Enter the achievements screen to view achievements you have unlocked.
+        /// </summary>
+        internal static string TooltipAchievements {
+            get {
+                return ResourceManager.GetString("TooltipAchievements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add $1 to your bet.
         /// </summary>
         internal static string TooltipBet1 {
             get {
@@ -967,7 +1065,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add 100$ to your bet.
+        ///   Looks up a localized string similar to Add $100 to your bet.
         /// </summary>
         internal static string TooltipBet100 {
             get {
@@ -976,7 +1074,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add 25$ to your bet.
+        ///   Looks up a localized string similar to Add $25 to your bet.
         /// </summary>
         internal static string TooltipBet25 {
             get {
@@ -985,7 +1083,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add 5$ to your bet.
+        ///   Looks up a localized string similar to Add $5 to your bet.
         /// </summary>
         internal static string TooltipBet5 {
             get {
@@ -994,7 +1092,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add 50$ to your bet.
+        ///   Looks up a localized string similar to Add $50 to your bet.
         /// </summary>
         internal static string TooltipBet50 {
             get {
@@ -1003,7 +1101,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add 500$ to your bet.
+        ///   Looks up a localized string similar to Add $500 to your bet.
         /// </summary>
         internal static string TooltipBet500 {
             get {
@@ -1084,7 +1182,7 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resets your entire game save.
+        ///   Looks up a localized string similar to Resets your entire game save (includes backgrounds and achievements).
         ///You will need to perform this action if your bank is empty..
         /// </summary>
         internal static string TooltipResetSave {

@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AchievementLocked" xml:space="preserve">
+    <value>(Locked)</value>
+  </data>
+  <data name="AchievementUnlocked" xml:space="preserve">
+    <value>(Unlocked)</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Bet amount</value>
   </data>
@@ -124,11 +130,23 @@
   <data name="bg_animal_pig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\animal_pig.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bg_black_hole" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_black_hole.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bg_casino" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\casino.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\casino_new.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_classic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\felt1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_cyber_car" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_cyber_car.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg_default" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\felt.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\new_felt.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_doomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_doomer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg_gentlemanly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gentlemanly.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +163,17 @@
   <data name="bg_office" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\office.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bg_shop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\money.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bg_secondary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_secondary.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_space" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_space.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_trudeau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_trudeau.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_wakanda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_wakanda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg_zoo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -315,7 +342,9 @@
   </data>
   <data name="ConfirmDeleteSaveFileQuestion" xml:space="preserve">
     <value>Are you sure you wish to delete your save file?
-All data will be lost permanently, but you will gain a starting amount of money in the process.</value>
+All data will be lost permanently, but you will gain a starting amount of money in the process.
+
+Deleted data includes statistics, money, purchased backgrounds and unlocked achievements.</value>
   </data>
   <data name="ConfirmEndGameQuestion" xml:space="preserve">
     <value>Are you sure you wish to end the game? 
@@ -346,11 +375,12 @@ Do you wish to try again?</value>
   <data name="InfoAboutText" xml:space="preserve">
     <value>Welcome to Blackjack!
 
-In this desktop game, you can play Blackjack against the dealer 
-and test your luck by beating the odds.
+In this desktop game, you can play Blackjack against the dealer and test your luck by beating the odds.
 
 The dealer uses one deck containing 52 card 
 that are shuffled using the Fisher-Yates method.
+
+You can unlock achievements as you play, which can be seen in the achievements screen, available from the main menu.
 
 You may also purchase additional background images from the shop, which is accessible from the main menu.
 
@@ -367,7 +397,7 @@ Platform : .NET 6.0  </value>
   </data>
   <data name="InfoDealerBust" xml:space="preserve">
     <value>The dealer bust!
- You win {0}$ </value>
+ You win {0}</value>
   </data>
   <data name="InfoDealerWin" xml:space="preserve">
     <value>The dealer wins!</value>
@@ -380,11 +410,11 @@ The dealer's next card would have been a
 {0}.</value>
   </data>
   <data name="InfoPlayerWin" xml:space="preserve">
-    <value>You win {0}$</value>
+    <value>You win {0}</value>
   </data>
   <data name="InfoTie" xml:space="preserve">
     <value>Tie!
-You get {0}$ back</value>
+You get {0} back</value>
   </data>
   <data name="Player" xml:space="preserve">
     <value>Player</value>
@@ -416,23 +446,26 @@ You get {0}$ back</value>
   <data name="TooltipAbout" xml:space="preserve">
     <value>Display information about this application</value>
   </data>
+  <data name="TooltipAchievements" xml:space="preserve">
+    <value>Enter the achievements screen to view achievements you have unlocked</value>
+  </data>
   <data name="TooltipBet1" xml:space="preserve">
-    <value>Add 1$ to your bet</value>
+    <value>Add $1 to your bet</value>
   </data>
   <data name="TooltipBet100" xml:space="preserve">
-    <value>Add 100$ to your bet</value>
+    <value>Add $100 to your bet</value>
   </data>
   <data name="TooltipBet25" xml:space="preserve">
-    <value>Add 25$ to your bet</value>
+    <value>Add $25 to your bet</value>
   </data>
   <data name="TooltipBet5" xml:space="preserve">
-    <value>Add 5$ to your bet</value>
+    <value>Add $5 to your bet</value>
   </data>
   <data name="TooltipBet50" xml:space="preserve">
-    <value>Add 50$ to your bet</value>
+    <value>Add $50 to your bet</value>
   </data>
   <data name="TooltipBet500" xml:space="preserve">
-    <value>Add 500$ to your bet</value>
+    <value>Add $500 to your bet</value>
   </data>
   <data name="TooltipDeal" xml:space="preserve">
     <value>Place your bets and start the game</value>
@@ -459,7 +492,7 @@ You get {0}$ back</value>
     <value>Reset your bet to zero</value>
   </data>
   <data name="TooltipResetSave" xml:space="preserve">
-    <value>Resets your entire game save.
+    <value>Resets your entire game save (includes backgrounds and achievements).
 You will need to perform this action if your bank is empty.</value>
   </data>
   <data name="TooltipShop" xml:space="preserve">
