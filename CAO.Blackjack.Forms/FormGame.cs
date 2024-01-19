@@ -324,6 +324,7 @@ namespace CAO.Blackjack.Forms
                     while (state.DealerHand?.IsSoftHandOrLess == true)
                     {
                         DealCard(state.DealerHand);
+                        ExecutionTimeUtils.WaitForSeconds(0.4f);
                     }
                 }
 
