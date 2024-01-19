@@ -539,7 +539,7 @@
             groupPlayerCards.ForeColor = Color.White;
             groupPlayerCards.Location = new Point(283, 287);
             groupPlayerCards.Name = "groupPlayerCards";
-            groupPlayerCards.Size = new Size(418, 202);
+            groupPlayerCards.Size = new Size(418, 212);
             groupPlayerCards.TabIndex = 31;
             groupPlayerCards.TabStop = false;
             // 
