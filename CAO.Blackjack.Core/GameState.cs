@@ -1,5 +1,4 @@
-﻿using CAO.Blackjack.Core;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace CAO.Blackjack.Core
@@ -209,12 +208,26 @@ namespace CAO.Blackjack.Core
         }
 
         /// <summary>
-        /// Gets the purchased background names.
+        /// Gets the purchased background IDs.
         /// </summary>
-        [JsonIgnore]
         public IEnumerable<string> PurchasedBackgroundIds
         {
-            get => _purchasedBackgroundsIds;
+            get
+            {
+                if (_purchasedBackgroundsIds == null)
+                {
+                    _purchasedBackgroundsIds = new string[] { };
+                }
+
+                return _purchasedBackgroundsIds;
+            }
+            set
+            {
+                if (_purchasedBackgroundsIds == value) return;
+                _purchasedBackgroundsIds = value.ToArray();
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PurchasedBackgroundIds)));
+            }
         }
 
         /// <summary>
@@ -226,7 +239,6 @@ namespace CAO.Blackjack.Core
             set
             {
                 if (value == _activeBackgroundId) return;
-
                 _activeBackgroundId = value;
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ActiveBackgroundId)));
@@ -258,15 +270,32 @@ namespace CAO.Blackjack.Core
         /// <param name="backgroundId">The name of the background to add to the purchased backgrounds.</param>
         public void AddPurchasedBackground(string backgroundId)
         {
-            _purchasedBackgroundsIds ??= new List<string>();
-
-            if (_purchasedBackgroundsIds.Contains(backgroundId))
+            if (PurchasedBackgroundIds.Contains(backgroundId))
             {
                 return;
             }
-            
-            _purchasedBackgroundsIds.Add(backgroundId);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PurchasedBackgroundIds)));
+
+            PurchasedBackgroundIds = PurchasedBackgroundIds.Append(backgroundId);
+        }
+
+        /// <summary>
+        /// Handles a property change in the internal player hand. 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The arguments of the event that was raised.</param>
+        private void PlayerHand_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(nameof(PlayerHand)));
+        }
+
+        /// <summary>
+        /// Handles a property change in the internal dealer hand. 
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The arguments of the event that was raised.</param>
+        private void DealerHand_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(nameof(DealerHand)));
         }
 
         /// <summary>
@@ -332,32 +361,13 @@ namespace CAO.Blackjack.Core
         /// <summary>
         /// Backing field for the PurchasedBackgroundIds property
         /// </summary>
-        [JsonPropertyName("PurchasedBackgroundIds")]
-        private IList<string> _purchasedBackgroundsIds = new List<string>();
+        private string[]? _purchasedBackgroundsIds;
 
         /// <summary>
         /// Backing field for the ActiveBackgroundId property.
         /// </summary>
         private string? _activeBackgroundId;
 
-        /// <summary>
-        /// Handles a property change in the internal player hand. 
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The arguments of the event that was raised.</param>
-        private void PlayerHand_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(nameof(PlayerHand)));
-        }
 
-        /// <summary>
-        /// Handles a property change in the internal dealer hand. 
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The arguments of the event that was raised.</param>
-        private void DealerHand_PropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(nameof(DealerHand)));
-        }
     }
 }

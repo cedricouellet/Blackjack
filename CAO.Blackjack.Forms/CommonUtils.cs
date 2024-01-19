@@ -61,6 +61,8 @@ namespace CAO.Blackjack.Forms
                 currentState.TieCount = loadedState.TieCount;
                 currentState.BankAmount = loadedState.BankAmount;
                 currentState.ActiveBackgroundId = loadedState.ActiveBackgroundId;
+                currentState.PurchasedBackgroundIds = loadedState.PurchasedBackgroundIds;
+
                 if (currentState.ActiveBackgroundId == null)
                 {
                     currentState.ActiveBackgroundId = ImageUtils.DefaultBackgroundId;
