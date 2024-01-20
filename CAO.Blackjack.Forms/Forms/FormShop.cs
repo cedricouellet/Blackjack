@@ -2,7 +2,6 @@
 using CAO.Blackjack.Forms.Models;
 using CAO.Blackjack.Forms.Properties;
 using CAO.Blackjack.Forms.Utils;
-using System.Runtime.CompilerServices;
 
 namespace CAO.Blackjack.Forms
 {

@@ -102,7 +102,43 @@ namespace CAO.Blackjack.Forms
             ExecutionTimeUtils.WaitForSeconds(2.5f);
             state.Deck?.Shuffle();
 
-            StartFirstTurn();
+            DealInitialCards();
+        }
+
+        /// <summary>
+        /// Determine the match outcome based on current state.
+        /// </summary>
+        /// <returns>The match outcome.</returns>
+        private MatchResult DetermineMatchOutcome()
+        {
+            if (state.DealerHand?.Sum > 21)
+            {
+                return MatchResult.DealerBust;
+            }
+            else if (state.DealerHand?.Sum == 21 && state.PlayerHand?.Sum < 21)
+            {
+                return MatchResult.DealerWin;
+            }
+            else if (state.DealerHand?.Sum == state.PlayerHand?.Sum)
+            {
+                return MatchResult.Tie;
+            }
+            else if (state.DealerHand?.Sum > state.PlayerHand?.Sum)
+            {
+                return MatchResult.DealerWin;
+            }
+            else if (state.DealerHand?.Sum > 21)
+            {
+                return MatchResult.DealerBust;
+            }
+            else if (state.PlayerHand?.Sum == 21 && state.DealerHand?.Sum == 21)
+            {
+                return MatchResult.Tie;
+            }
+            else
+            {
+                return MatchResult.PlayerWin;
+            }
         }
 
         /// <summary>
@@ -110,13 +146,12 @@ namespace CAO.Blackjack.Forms
         /// </summary>
         /// <param name="result">The result of the match.</param>
         /// <exception cref="ArgumentOutOfRangeException">If the result was unhandled due to an unknown value.</exception>
-        private void EndMatch(MatchResult? result)
+        private void EndMatch(MatchResult result)
         {
             int paidOut;
+
             switch (result)
             {
-                case null:
-                    break;
                 case MatchResult.PlayerForfeit:
                     AudioUtils.Play(AudioUtils.Sounds.SfxExit);
                     break;
@@ -238,17 +273,17 @@ namespace CAO.Blackjack.Forms
                 throw new InvalidOperationException("No more cards!");
             }
 
-            ExecutionTimeUtils.WaitForSeconds(0.7f);
+            ExecutionTimeUtils.WaitForSeconds(0.4f);
             Card dealt = state.Deck.DealCard(rank);
             hand.AddCard(dealt);
             AudioUtils.Play(AudioUtils.Sounds.SfxCard);
         }
 
         /// <summary>
-        /// Makes the first turn in the game.
+        /// Deals the initial cards.
         /// </summary>
         /// <exception cref="InvalidOperationException">Thrown if the game is not yet started.</exception>
-        private void StartFirstTurn()
+        private void DealInitialCards()
         {
             if (!state.InProgress)
             {
@@ -277,20 +312,20 @@ namespace CAO.Blackjack.Forms
         private void DealFakeCardToDealer()
         {
             // Delay for a smoother experience 
-            ExecutionTimeUtils.WaitForSeconds(0.7f);
+            ExecutionTimeUtils.WaitForSeconds(0.4f);
 
             pnlDealerCard2.BackgroundImage = ImageUtils.GetBitmapResource("card_back");
             pnlDealerCard2.Refresh();
             AudioUtils.Play(AudioUtils.Sounds.SfxCard);
 
             // Delay for a smoother experience 
-            ExecutionTimeUtils.WaitForSeconds(1f);
+            ExecutionTimeUtils.WaitForSeconds(0.7f);
         }
 
         /// <summary>
         /// Deal to the dealer then handle the turn.
         /// </summary>
-        private void StartDealerTurn(bool endOfTurnEndsGame = false, bool beatPlayerOrBust = false)
+        private void StartDealerTurn()
         {
             if (!state.InProgress)
             {
@@ -304,50 +339,14 @@ namespace CAO.Blackjack.Forms
 
             if (state.CurrentTurn == PlayerType.Dealer)
             {
-                // AGGRESSIVE
-                // Wants to beat the player while not busting at all costs
-                // Removed since it was unfair (and not like real casinos)
-                //if (beatPlayerOrBust)
-                //{
-                //    while (state.DealerHand?.Sum <= state.PlayerHand?.Sum) 
-                //    {
-                //        if (state.DealerHand?.IsSoftHandOrLess == false && state.DealerHand?.Sum == state.PlayerHand?.Sum)
-                //        {
-                //            break;
-                //        }
-
-                //        DealCard(state.DealerHand);
-                //        ExecutionTimeUtils.WaitForSeconds(0.4f);
-                //    }
-                //}
-                //else
-                //{
-                //    // Stand if soft 17 or less
-                //    while (state.DealerHand?.IsSoftHandOrLess == true)
-                //    {
-                //        DealCard(state.DealerHand);
-                //        ExecutionTimeUtils.WaitForSeconds(0.4f);
-                //    }
-                //}
-
                 // NEUTRAL
                 // Will not take into account the player's hand and will always hit on soft 17 or less
                 while (state.DealerHand?.IsSoftHandOrLess == true)
                 {
                     DealCard(state.DealerHand);
-                    ExecutionTimeUtils.WaitForSeconds(0.2f);
                 }
 
-                if (endOfTurnEndsGame)
-                {
-                    HandleEndOfTurn(true);
-                    return;
-                }
-
-                if (!HandleEndOfTurn(state.DidPlayerDouble))
-                {
-                    state.CurrentTurn = PlayerType.Player;
-                }
+                EndMatch(DetermineMatchOutcome());
             }
         }
 
@@ -358,80 +357,28 @@ namespace CAO.Blackjack.Forms
         {
             DealCard(state.PlayerHand);
 
-            if (!HandleEndOfTurn(false))
+            if (state.DidPlayerDouble || (!CanPlayerContinue(out bool gameEnded) && !gameEnded))
             {
                 state.CurrentTurn = PlayerType.Dealer;
-                StartDealerTurn(state?.PlayerHand?.Sum == 21, state?.DidPlayerDouble == true);
+                StartDealerTurn();
             }
         }
 
-        /// <summary>
-        /// Handles the end of a turn.
-        /// </summary>
-        /// <param name="isLastTurn">Whether or not the turn that was made should be cause the end of the game.</param>
-        /// <returns>True if the end of the turn ended the game, otherwise false.</returns>
-        private bool HandleEndOfTurn(bool isLastTurn)
+        private bool CanPlayerContinue(out bool gameEnded)
         {
-            switch (state.CurrentTurn)
+            gameEnded = false;
+            if (state.PlayerHand?.Sum > 21)
             {
-                case PlayerType.Player:
-                    if (state.PlayerHand?.Sum > 21)
-                    {
-                        EndMatch(MatchResult.PlayerBust);
-                        return true;
-                    }
-                    else if (state.PlayerHand?.Sum == 21 && state.DealerHand?.Sum == 21)
-                    {
-                        EndMatch(MatchResult.Tie);
-                        return true;
-                    }
-
-                    return false;
-                case PlayerType.Dealer:
-                    if (state.DealerHand?.Sum > 21)
-                    {
-                        EndMatch(MatchResult.DealerBust);
-                        return true;
-                    }
-
-                    if (state.DealerHand?.Sum == 21 && state.PlayerHand?.Sum < 21)
-                    {
-                        EndMatch(MatchResult.DealerWin);
-                        return true;
-                    }
-
-                    if (isLastTurn)
-                    {
-                        if (state.DealerHand?.Sum == state.PlayerHand?.Sum)
-                        {
-                            EndMatch(MatchResult.Tie);
-                            return true;
-                        }
-                        else if (state.DealerHand?.Sum > state.PlayerHand?.Sum)
-                        {
-                            EndMatch(MatchResult.DealerWin);
-                            return true;
-                        }
-
-                        EndMatch(MatchResult.PlayerWin);
-                        return true;
-                    }
-
-                    if (state.DealerHand?.Sum > 21)
-                    {
-                        EndMatch(MatchResult.DealerBust);
-                        return true;
-                    }
-                    else if (state.PlayerHand?.Sum == 21 && state.DealerHand?.Sum == 21)
-                    {
-                        EndMatch(MatchResult.Tie);
-                        return true;
-                    }
-
-                    return false;
-                default:
-                    return false;
+                gameEnded = true;
+                EndMatch(MatchResult.PlayerBust);
+                return false;
             }
+            else if (state.PlayerHand?.Sum == 21)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -843,7 +790,7 @@ namespace CAO.Blackjack.Forms
         {
             AudioUtils.Play(AudioUtils.Sounds.SfxButtonClick);
             state.CurrentTurn = PlayerType.Dealer;
-            StartDealerTurn(true, true);
+            StartDealerTurn();
         }
 
         /// <summary>
@@ -855,7 +802,6 @@ namespace CAO.Blackjack.Forms
         {
             AudioUtils.Play(AudioUtils.Sounds.SfxButtonClick);
             AddBet(state.BetAmount);
-
             state.DidPlayerDouble = true;
             DealToPlayer();
         }
