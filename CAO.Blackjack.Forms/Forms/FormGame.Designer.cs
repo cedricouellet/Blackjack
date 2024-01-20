@@ -713,7 +713,7 @@
             Controls.Add(btnDeal);
             Controls.Add(groupInfo);
             Controls.Add(groupBet);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FormGame";

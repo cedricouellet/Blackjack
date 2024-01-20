@@ -161,7 +161,7 @@
             Controls.Add(btnExit);
             Controls.Add(lblBackgroundsTitle);
             Controls.Add(listBackgrounds);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FormShop";
