@@ -15,7 +15,10 @@ namespace CAO.Blackjack.Forms
     {
         #region Constants
 
-  
+        /// <summary>
+        /// The maximum betting amount.
+        /// </summary>
+        public const int MaximumBetAmount = 10000;
         #endregion
 
         #region Private Members
