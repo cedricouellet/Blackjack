@@ -412,6 +412,11 @@ The dealer's next card would have been a
   <data name="InfoPlayerWin" xml:space="preserve">
     <value>You win {0}</value>
   </data>
+  <data name="InfoPlayerWinBlackjack" xml:space="preserve">
+    <value>Blackjack!
+
+You win {0}</value>
+  </data>
   <data name="InfoTie" xml:space="preserve">
     <value>Tie!
 You get {0} back</value>

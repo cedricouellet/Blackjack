@@ -38,10 +38,23 @@
         /// - The sum of the player's hand is greater than the sum of the dealer's hand
         /// </para>
         /// <para>
-        /// - The sum of the player's hand is lesser or equal to 21
+        /// - The sum of the player's hand is lesser to 21
         /// </para>
         /// </summary>
         PlayerWin,
+
+        /// <summary>
+        /// Represents the match result where the player wins with a blackjack (21).
+        /// <para>
+        /// <para>
+        /// - The sum of the player's hand is greater than the sum of the dealer's hand
+        /// </para>
+        /// <para>
+        /// - The sum of the player's hand is equal to 21
+        /// </para>
+        /// </summary>
+        /// </summary>
+        PlayerWinBlackjack,
 
         /// <summary>
         /// Represents the match result where the player and the dealer have a tie.

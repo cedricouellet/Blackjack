@@ -947,6 +947,17 @@ namespace CAO.Blackjack.Forms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blackjack!
+        ///
+        ///You win {0}.
+        /// </summary>
+        internal static string InfoPlayerWinBlackjack {
+            get {
+                return ResourceManager.GetString("InfoPlayerWinBlackjack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tie!
         ///You get {0} back.
         /// </summary>

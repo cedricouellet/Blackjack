@@ -33,16 +33,11 @@ namespace CAO.Blackjack.Core.Models
         /// <param name="rank">FOR DEBUGGING PURPOSES</param>
         /// <returns>The card that was dealt</returns>
         /// <exception cref="Exception">If no cards are left in the deck</exception>
-        public Card DealCard(Rank? rank = null)
+        public Card DealCard()
         {
             if (!HasNext)
             {
                 throw new Exception("No cards left in deck");
-            }
-
-            if (rank != null)
-            {
-                return cards.First(x => x.Rank == rank);
             }
 
             return cards.Pop();

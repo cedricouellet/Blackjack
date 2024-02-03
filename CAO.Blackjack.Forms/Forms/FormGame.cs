@@ -15,11 +15,7 @@ namespace CAO.Blackjack.Forms
     {
         #region Constants
 
-        /// <summary>
-        /// The maximum betting amount.
-        /// </summary>
-        private const int MaximumBetAmount = 10000;
-
+  
         #endregion
 
         #region Private Members
@@ -111,34 +107,27 @@ namespace CAO.Blackjack.Forms
         /// <returns>The match outcome.</returns>
         private MatchResult DetermineMatchOutcome()
         {
+            if (state.DealerHand?.Sum == state.PlayerHand?.Sum)
+            {
+                return MatchResult.Tie;
+            }
+
+            if (state.PlayerHand?.Sum == 21)
+            {
+                return MatchResult.PlayerWinBlackjack;
+            }
+
             if (state.DealerHand?.Sum > 21)
             {
                 return MatchResult.DealerBust;
             }
-            else if (state.DealerHand?.Sum == 21 && state.PlayerHand?.Sum < 21)
+            
+            if (state.DealerHand?.Sum > state.PlayerHand?.Sum)
             {
                 return MatchResult.DealerWin;
             }
-            else if (state.DealerHand?.Sum == state.PlayerHand?.Sum)
-            {
-                return MatchResult.Tie;
-            }
-            else if (state.DealerHand?.Sum > state.PlayerHand?.Sum)
-            {
-                return MatchResult.DealerWin;
-            }
-            else if (state.DealerHand?.Sum > 21)
-            {
-                return MatchResult.DealerBust;
-            }
-            else if (state.PlayerHand?.Sum == 21 && state.DealerHand?.Sum == 21)
-            {
-                return MatchResult.Tie;
-            }
-            else
-            {
-                return MatchResult.PlayerWin;
-            }
+
+            return MatchResult.PlayerWin;
         }
 
         /// <summary>
@@ -163,15 +152,21 @@ namespace CAO.Blackjack.Forms
                     break;
                 case MatchResult.DealerBust:
                     state.WinCount++;
-                    CashOut(true, out paidOut);
+                    CashOut(2, out paidOut);
                     AudioUtils.Play(AudioUtils.Sounds.SfxWin);
                     DialogUtils.ShowInfo(string.Format(Resources.InfoDealerBust, paidOut.ToString("C0")));
                     break;
                 case MatchResult.PlayerWin:
                     state.WinCount++;
-                    CashOut(true, out paidOut);
+                    CashOut(2, out paidOut);
                     AudioUtils.Play(AudioUtils.Sounds.SfxWin);
                     DialogUtils.ShowInfo(string.Format(Resources.InfoPlayerWin, paidOut.ToString("C0")));
+                    break;
+                case MatchResult.PlayerWinBlackjack:
+                    state.WinCount++;
+                    CashOut(3, out paidOut);
+                    AudioUtils.Play(AudioUtils.Sounds.SfxWin);
+                    DialogUtils.ShowInfo(string.Format(Resources.InfoPlayerWinBlackjack, paidOut.ToString("C0")));
                     break;
                 case MatchResult.DealerWin:
                     state.LossCount++;
@@ -180,7 +175,7 @@ namespace CAO.Blackjack.Forms
                     break;
                 case MatchResult.Tie:
                     state.TieCount++;
-                    CashOut(false, out paidOut);
+                    CashOut(1, out paidOut);
                     AudioUtils.Play(AudioUtils.Sounds.SfxTie);
                     DialogUtils.ShowInfo(string.Format(Resources.InfoTie, paidOut.ToString("C0")));
                     break;
@@ -256,7 +251,7 @@ namespace CAO.Blackjack.Forms
         /// If the deck or hand are not initialized, 
         /// or if the deck lacks available cards 
         /// </exception>
-        private void DealCard(Hand? hand, Rank? rank = null)
+        private void DealCard(Hand? hand)
         {
             if (state.Deck == null)
             {
@@ -274,7 +269,7 @@ namespace CAO.Blackjack.Forms
             }
 
             ExecutionTimeUtils.WaitForSeconds(0.4f);
-            Card dealt = state.Deck.DealCard(rank);
+            Card dealt = state.Deck.DealCard();
             hand.AddCard(dealt);
             AudioUtils.Play(AudioUtils.Sounds.SfxCard);
         }
@@ -357,7 +352,7 @@ namespace CAO.Blackjack.Forms
         {
             DealCard(state.PlayerHand);
 
-            if (state.DidPlayerDouble || (!CanPlayerContinue(out bool gameEnded) && !gameEnded))
+            if ((!CanPlayerContinue(out bool gameEnded) && !gameEnded)  || state.DidPlayerDouble)
             {
                 state.CurrentTurn = PlayerType.Dealer;
                 StartDealerTurn();
@@ -398,11 +393,11 @@ namespace CAO.Blackjack.Forms
         /// <summary>
         /// Cash out to the player after a win.
         /// </summary>
-        /// <param name="isDouble">Whether or not to double the amount paid out.</param>
+        /// <param name="multiplier">The multiplier applied to the cash out amount.</param>
         /// <param name="amountPaidOut">The amount that was paid out.</param>
-        private void CashOut(bool isDouble, out int amountPaidOut)
+        private void CashOut(int multiplier, out int amountPaidOut)
         {
-            amountPaidOut = isDouble ? state.BetAmount * 2 : state.BetAmount;
+            amountPaidOut = state.BetAmount * multiplier;
             state.BankAmount += amountPaidOut;
             state.BetAmount = 0;
         }
@@ -584,7 +579,7 @@ namespace CAO.Blackjack.Forms
         /// </summary>
         private void UpdateTiesUI()
         {
-            lblTiesValue.Text = state.LossCount.ToString();
+            lblTiesValue.Text = state.TieCount.ToString();
         }
 
         /// <summary>
@@ -814,7 +809,7 @@ namespace CAO.Blackjack.Forms
         private void BtnResetBet_Click(object sender, EventArgs e)
         {
             AudioUtils.Play(AudioUtils.Sounds.SfxButtonClick);
-            CashOut(false, out _);
+            CashOut(1, out _);
         }
         #endregion
     }
